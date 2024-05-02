@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Person Information</title>
+<style>
+/* Styles for the list */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #333; /* Darken background on hover */
+}
+
+/* Styles for the information display */
+#personInfo {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  display: none; /* Initially hide the information */
+  background-color: #111; /* Light black background */
+}
+
+#personInfo h2 {
+  color: #0f0; /* Dark green color for header */
+}
+
+#personInfo span {
+  color: yellow; /* Yellow color for person names and numbers */
+}
+
+#personInfo p {
+  color: #f0f; /* Pink color for conversation */
+}
+</style>
+</head>
+<body>
+
+<h2>Click on a person's name or phone number to view their information:</h2>
+<ul id="personList">
+  <li id="stella">Stella - 0708177111</li>
+  <li id="hadija">Hadija - 393299698423</li>
+</ul>
+
+<div id="personInfo">
+  <!-- Person information will be displayed here -->
+</div>
+
+<script>
+// Data for Stella
+var stellaData = `Stella CONTACT 0708177111
+Hi boo?hwz ur day?
+You manged selling the car we talked about 
+Are we on for tonite?
+Utanileta take away ya KFC?
+Are home or we talk later boo?
+You turned me on the other night ,better finish what you started 
+Are you coming over 
+Don’t think ill make it Leo ,mum isnt feeling well
+Why are you not picking my calls boo?
+What is the meaning this boo?Been waiting tangu afternoon?
+The vacation you promised im still dreaming about it
+Niko hapa Kilimani with pals ,Utanipitia?
+Today I saw a beatifull dress online utanibuia my dear? 
+Hi boo,the cash we atlked about jana utanitumia saa ngapi?
+Sens me your pin I come over once done with work 
+For sure last night was amazing missing ya boo boo
+Sorry got ur missed call was alseep don’t get mad dear
+What do ya feel like eating? Chciken? Or?
+I dint feel poa for real jana the way you were flirting with my pal Getrude,you know how nakulike boo
+Im so low boo boob mind coming over for a chit chat ?
+What time are you leaving work boo?
+ooh my I wish we were living together this bardi for real is killing me softly
+Where are we linkip up Today?Cant wait 
+Crazy traffic but almost there 
+Feelk like Martel Today,,iwanna get high and be crazy with ….
+Why so boo?We planned this for weeks na umenyamaza 
+When you get home say hi to your kids
+Cant wait for the day you will introduce me to your family 
+The first day I saw you I got weet instantly without okra boo boo
+There is a secretary who is so jealous of the dress you bought me 
+Hi boo boo please are you picking me up ?Dont feel like drving Today?
+its always a pleasure having you around by my side ….You are so sweet 
+Bye boo …talk you you kesho goodnight and take care`;
+
+// Data for Hadija
+var hadijaData = `Hadija 393299698423
+Hi Sweet pie ,Are you ok
+I miss fucking ya ,the last time you made me feel like a kid in Love again
+You are one of a kind sweet pie 
+Can't wait to see ya again 
+You are such an amazing person 
+East west north south I have never found such a sweet pussy as yours 
+Kindly I will send you money when I get for your shopping 
+One day I will buy you a car in my yard .A good girl like you deserves nothing but the best`;
+
+// Function to toggle display of person's information
+function togglePersonInfo(personName) {
+  var infoDiv = document.getElementById("personInfo");
+
+  // Clear previous content
+  infoDiv.innerHTML = "";
+
+  // Check if the information is already displayed
+  if (infoDiv.style.display === "block" && infoDiv.getAttribute("data-person") === personName) {
+    // If already displayed, hide the information
+    infoDiv.style.display = "none";
+  } else {
+    // If not displayed or displayed for a different person, display the information
+    var data;
+    if (personName === "Stella") {
+      data = stellaData;
+    } else if (personName === "Hadija") {
+      data = hadijaData;
+    }
+    // Split the data into individual lines
+    var lines = data.split("\n");
+    // Create paragraphs for each line
+    lines.forEach(function(line) {
+      var p = document.createElement("p");
+      p.textContent = line;
+      infoDiv.appendChild(p);
+    });
+    // Show the information div
+    infoDiv.style.display = "block";
+    // Set attribute to track which person's information is displayed
+    infoDiv.setAttribute("data-person", personName);
+  }
+}
+
+// Click event handlers for Stella and Hadija
+document.getElementById("stella").addEventListener("click", function() {
+  togglePersonInfo("Stella");
+});
+document.getElementById("hadija").addEventListener("click", function() {
+  togglePersonInfo("Hadija");
+});
+</script>
+
+</body>
+</html>
